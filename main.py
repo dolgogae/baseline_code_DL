@@ -8,8 +8,6 @@ img_size = 28
 fashion_mnist = keras.datasets.fashion_mnist
 (X_train_full, y_train_full), (X_test, y_test) = fashion_mnist.load_data()
 
-# X_train_full = np.reshape(X_train_full, (-1,img_size,img_size,1))
-# y_train_full = np.reshape(y_train_full, (-1,img_size,img_size,1))
 
 X_valid, X_train = X_train_full[:5000] / 255.0, X_train_full[5000:] / 255.0
 y_valid, y_train = y_train_full[:5000], y_train_full[5000:]
@@ -19,8 +17,6 @@ X_test = X_test / 255.0
 
 X_valid = X_valid.reshape(-1,img_size,img_size,1)
 X_train = X_train.reshape(-1,img_size,img_size,1)
-# y_valid = y_valid.reshape(-1,img_size,img_size,1)
-# y_train = y_train.reshape(-1,img_size,img_size,1)
 
 def train(model, nb_classes, image_shape=(28,28,1), batch_size=32, nb_epoch=100):
 
@@ -39,9 +35,7 @@ def train(model, nb_classes, image_shape=(28,28,1), batch_size=32, nb_epoch=100)
 def main():
     nb_classes = 10
 
-    model = 'vgg16'
-
-    # print(X_valid.shape)
+    model = 'resnet34'
 
     train(model, nb_classes)
 
